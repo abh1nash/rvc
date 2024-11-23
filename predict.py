@@ -17,6 +17,8 @@ import main as m
 def download_online_model(url, dir_name):
     print(f"[~] Downloading voice model with name {dir_name}...")
     zip_name = url.split("/")[-1]
+    # ignore query params (if present)
+    zip_name = zip_name.split("?")[0]
     extraction_folder = os.path.join(m.rvc_models_dir, dir_name)
     if os.path.exists(extraction_folder):
         print(f"Voice model directory {dir_name} already exists! Skipping download.")
