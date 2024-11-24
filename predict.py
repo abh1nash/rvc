@@ -195,8 +195,9 @@ class Predictor(BasePredictor):
         """
 
         if custom_rvc_model_download_url:
+            # ignore query params (if present)
             custom_rvc_model_download_name = urllib.parse.unquote(
-                custom_rvc_model_download_url.split("/")[-1]
+                custom_rvc_model_download_url.split("/")[-1].split("?")[0]
             )
             custom_rvc_model_download_name = os.path.splitext(
                 custom_rvc_model_download_name
